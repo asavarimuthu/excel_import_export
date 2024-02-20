@@ -1,0 +1,49 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" 
+xmlns:u="sap.ui.unified" xmlns="sap.m" controllerName="com.sap.excelexportimport.controller.Main" height="100%">
+	<Page title="Spreadsheet Export using sap.m.Table" showHeader="true">
+
+         <customHeader>
+						<Bar>
+							<contentMiddle>
+								<Label text="Read Data From Excel"/>
+							</contentMiddle>
+							<contentRight>
+								<u:FileUploader id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+									icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/>
+							</contentRight>
+						</Bar>
+					</customHeader>
+					<content>
+
+		<Table id="exportTable" inset="false" items="{path:'/Users'}" growing="true" growingThreshold="50">
+			<headerToolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer />
+					<Button text="Download" icon="sap-icon://excel-attachment" press="onExport"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Text text="ID" />
+				</Column>
+				<Column>
+					<Text text="Name" />
+				</Column>
+				<Column>
+					<Text text="Age" />
+				</Column>
+			
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{UserID}" />
+						<Text text="{Name}" />
+						<Text text="{Age}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		</content>
+	</Page>
+</mvc:View>
